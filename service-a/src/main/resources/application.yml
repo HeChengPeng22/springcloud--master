@@ -1,0 +1,19 @@
+server:
+  #服务端口
+  port: 8082
+spring:
+  #服务名称 - 服务之间使用名称通讯
+  application:
+    name: service-object-a
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+    registry-with-eureka: true
+    fetch-registry: true
+  instance:
+  #使用ip地址注册到注册中心
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  # 注册中心列表中显示状态参数
+

@@ -1,0 +1,21 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: service-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+zuul:
+  routes:
+    service-a:
+      path: /service-a/**
+      serviceId: service-objcat-a
+    service-b:
+      path: /service-b/**
+      serviceId: service-objcat-b
+# 添加ribbon的超时时间设置
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
